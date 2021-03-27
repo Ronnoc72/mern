@@ -1,0 +1,30 @@
+:root {
+  --size: 24px;
+}
+
+.newfile {
+  margin: 30px;
+}
+
+.paper {
+  display: block;
+  background: wheat;
+  width: 750px;
+  height: 1100px;
+  margin-left: 50%;
+  margin: auto;
+}
+
+textarea {
+  font-size: var(--size);
+  position: relative;
+  display: block;
+  background: wheat;
+  border: none;
+  margin: auto;
+  top: 80px;
+  height: 925px;
+  width: 85%;
+  resize: none;
+  outline: none;
+}

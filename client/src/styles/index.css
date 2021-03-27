@@ -1,0 +1,51 @@
+/* colors: 0c1618,004643,faf4d3,d1ac00,f6be9a */
+@import url('https://fonts.googleapis.com/css2?family=Cuprum&display=swap');
+
+* {
+  color: #0c1618;
+  font-family: "Cuprum", sans;
+}
+
+body {
+  background: #004643;
+}
+
+.file-selection {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  background: #004643;
+}
+
+.file-selection div {
+  width: 12%;
+  height: 250px;
+  margin: 10px 20px 10px 20px;
+  background: #faf4d3;
+  text-align: center;
+  font-size: 24px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-selection div:hover {
+  transition: 200ms;
+  border-radius: 5%;
+  padding: 0;
+  box-shadow: 0px 5px 10px black;
+  width: 15%;
+  height: 300px;
+  margin: 0;
+}
+
+p {
+	position: absolute;
+	animation: fade-in 300ms ease-in;
+}
+
+@keyframes fade-in {
+	from {color: rgba(0, 0, 0, 0.0);}
+	to {color: black;}
+}
