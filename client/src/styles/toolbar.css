@@ -3,18 +3,31 @@
 }
 
 .dropdown {
-  display: none;
-  position: absolute;
+  display: grid;
   font-size: larger;
-  list-style-type: none;
   z-index: 1;
+  grid-template-rows: 0;
+  opacity: 0;
+  text-align: center;
 }
 
-.list-items > .list-item {
-  display: inline;
-  padding: 0 15px 0 15px;
+.list-items {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  background: whitesmoke;
 }
 
-.list-item:hover .dropdown {
-  display: inline-block;
+.list-item:hover .dropdown,
+.dropdown:hover {
+  opacity: 1;
+  grid-template-rows: auto;
+}
+
+.list-item:hover {
+  background: rgb(172, 172, 172);
+}
+
+.dropdown-item div {
+  background: tomato;
+  width: 100%;
 }

@@ -6,10 +6,10 @@ const menuItems = menu.menuItems;
 export default function ToolBar() {
   const listItems = menuItems.header.map(item => {
     return <div className="list-item" key={item}>{item}
-    <div className="dropdown">{menuItems.dropdown[item.toLowerCase()].map(drop => {
-      const padding = menuItems.dropdown[item.toLowerCase()].indexOf(drop);
-      return <p style={{paddingTop: padding*10+"px"}}>{drop}</p>
-    })}</div></div>;
+      <div className="dropdown">
+        <div className="dropdown-item">{menuItems.dropdown[item.toLowerCase()].map(drop => {
+          return <div>{drop}</div>
+      })}</div></div></div>;
   })
   return (
     <div className="toolbar">
