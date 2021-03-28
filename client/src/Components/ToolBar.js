@@ -1,22 +1,22 @@
 import React from "react";
 import "../styles/toolbar.css";
+import menu from "../text.json";
+const menuItems = menu.menuItems;
 
 export default function ToolBar() {
-  const MenuItems = ["File", "Edit", "View"];
-  const fileDropDown = ["Clear Text", "Save", "Home"];
-  const fileDropDownItems = fileDropDown.map(item => {
-    return <div className="dropdown" key={item}>{item}</div>;
-  })
-  const listItems = MenuItems.map(item => {
-    return <li key={item}>{item}</li>;
+  const listItems = menuItems.header.map(item => {
+    return <div className="list-item" key={item}>{item}
+    <div className="dropdown">{menuItems.dropdown[item.toLowerCase()].map(drop => {
+      const padding = menuItems.dropdown[item.toLowerCase()].indexOf(drop);
+      return <p style={{paddingTop: padding*10+"px"}}>{drop}</p>
+    })}</div></div>;
   })
   return (
     <div className="toolbar">
       <input type="text"></input>
-      <ul>
+      <div className="list-items">
         {listItems}
-        {fileDropDownItems}
-      </ul>
+      </div>
     </div>
   );
 }

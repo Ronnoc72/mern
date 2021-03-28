@@ -1,0 +1,10 @@
+{
+    "menuItems": {
+        "header": ["File", "Edit", "View"],
+        "dropdown": {
+            "file": ["Clear", "Save", "Home"],
+            "edit": ["Font", "Image"],
+            "view": ["Zoom", "Insert"]
+        }
+    }
+}

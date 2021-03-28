@@ -2,19 +2,19 @@
   background: whitesmoke;
 }
 
-ul > li {
-  display: inline;
-  list-style-type: none;
-  font-size: large;
-  margin-left: 15px;
-}
-
 .dropdown {
   display: none;
+  position: absolute;
   font-size: larger;
+  list-style-type: none;
   z-index: 1;
 }
 
-li:hover .dropdown {
-  display: block;
+.list-items > .list-item {
+  display: inline;
+  padding: 0 15px 0 15px;
+}
+
+.list-item:hover .dropdown {
+  display: inline-block;
 }
