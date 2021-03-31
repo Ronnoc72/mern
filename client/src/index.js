@@ -11,6 +11,6 @@ const router = (
       <Route path="/newfile" component={NewFile} />
     </div>
   </Router>
-)
+);
 
 ReactDOM.render(router, document.getElementById('root'));
