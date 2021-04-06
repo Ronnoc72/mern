@@ -4,7 +4,8 @@ import menu from "../text.json";
 const menuItems = menu.menuItems;
 
 function handleClick() {
-	const doc = document.getElementById("File");
+	fetch("http://localhost:9000/newfile")
+    .catch((err) => console.log(err));
 }
 
 export default function ToolBar() {

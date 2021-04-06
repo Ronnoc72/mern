@@ -1,15 +1,35 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var cors = require("cors");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+// connection to the mongodb.
+const userTemplate = require("./mongodb/user");
+const mongoose = require("mongoose");
+const uri = "mongodb+srv://Ronnoc72:Ronnoc258@user-data.30vvh.mongodb.net/users?retryWrites=true&w=majority";
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+// const person = new userTemplate({
+//     _id: new mongoose.Types.ObjectId(),
+//     username: "connor-paxman",
+//     password: "connor-paxman",
+//     title: "main-document",
+//     text: "Hello There",
+//     styles: {
+//         color: "white",
+//         fontSize: "24"
+//     }
+// });
+// person.save((err) => {
+//     if (err) console.error(err);
+// });
 
-var indexRouter = require("./routes/index");
-var historyRouter = require("./routes/history");
-var newFileRouter = require("./routes/newFile");
+const indexRouter = require("./routes/index");
+const historyRouter = require("./routes/history");
+const newFileRouter = require("./routes/newFile");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+// all the routes being used by the app.
 app.use("/", indexRouter);
 app.use("/history", historyRouter);
 app.use("/newfile", newFileRouter);
