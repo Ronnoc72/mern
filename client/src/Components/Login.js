@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/login.css";
 
-function confirmLogin() {
-	const info = fetch("http://localhost:9000/login")
-	.then((res) => res)
-	.catch((err) => console.log(err));
-}
-
-export default function Login() {
+function Login() {
+	const confirmLogin = () => {
+		return;
+	}
+	const registerAccount = (e) => {
+		fetch("http://localhost:9000/register");
+	}
 	return (
 		<div className="main">
-			<div className="login">
-				<form>
-					<input type="text" placeholder="Username" required />
-					<input type="text" placeholder="Password" required />
-				</form>
+			<div id="login">
+				<h1>Login</h1>
+				<div className="center">
+					<form href="http://localhost:9000/register/username/password" onSubmit={confirmLogin}>
+						<div>
+							<input name="username" type="text" placeholder="Username" required />
+							<br />
+							<input name="password" type="text" placeholder="Password" required />
+							<button>Login</button>
+						</div>
+					</form>
+				</div>
+				<div className="center">
+					<a href="#">Forgot Password</a>
+				</div>
 			</div>
-			<div className="register">
-				<form>
-					<input type="text" placeholder="Username" required />
-					<input type="text" placeholder="Password" required />
-					<input type="text" placeholder="Comfirm Password" required />
-				</form>
+			<div id="register">
+				<h1>Register</h1>
+				<div className="center">
+					<form onSubmit={registerAccount} method="get">
+						<div>
+							<input name="username" type="text" placeholder="Username" required />
+							<br />
+							<input name="password" type="text" placeholder="Password" required />
+							<br />
+							<input name="confirm-password" type="text" placeholder="Comfirm Password" required />
+							<button>Register</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
 }
+
+export default Login;

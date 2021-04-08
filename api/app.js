@@ -5,11 +5,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 // connection to the mongodb.
-const userTemplate = require("./mongodb/user");
 const mongoose = require("mongoose");
 const uri = "mongodb+srv://Ronnoc72:Ronnoc258@user-data.30vvh.mongodb.net/users?retryWrites=true&w=majority";
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
 // const person = new userTemplate({
 //     _id: new mongoose.Types.ObjectId(),
 //     username: "connor-paxman",
@@ -28,6 +26,7 @@ const db = mongoose.connection;
 const indexRouter = require("./routes/index");
 const historyRouter = require("./routes/history");
 const newFileRouter = require("./routes/newFile");
+const registerRouter = require("./routes/register");
 
 const app = express();
 
@@ -45,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/history", historyRouter);
 app.use("/newfile", newFileRouter);
+app.use("/register", registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
