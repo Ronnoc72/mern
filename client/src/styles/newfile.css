@@ -28,3 +28,30 @@ textarea {
   resize: none;
   outline: none;
 }
+
+#font-window {
+  display: none;
+  position: absolute;
+  background: whitesmoke;
+  top: 50px;
+  left: 33%;
+  height: 400px;
+  width: 33%;
+}
+
+#font-window div {
+  display: grid;
+  list-style-type: none;
+  font-size: large;
+  grid-template-rows: auto;
+}
+
+#image-window {
+  display: none;
+  position: absolute;
+  background: whitesmoke;
+  top: 50px;
+  left: 33%;
+  height: 400px;
+  width: 33%;
+}
