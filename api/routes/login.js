@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const userTemplate = require("../mongodb/user");
 
-router.post('/', function(req, res, next) {
-    userTemplate.findOne({"username": "connor-paxman"}, (err, person) => {
+router.get('/:username/:password', function(req, res, next) {
+    userTemplate.findOne({"username": req.params.username, "password": req.params.password}, (err, person) => {
         if (err) console.log(err);
-        console.log(person);
+        if (person) {
+            res.json({mes: "Account doesn't exist"});
+        }
     });
 });
 

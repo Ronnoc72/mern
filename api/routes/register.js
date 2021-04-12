@@ -4,15 +4,22 @@ const router = express.Router();
 const userTemplate = require("../mongodb/user");
 
 router.get('/:username/:password', function(req, res, next) {
-    console.log("cool");
-    const user = new userTemplate({
-        _id: mongoose.Types.ObjectId(),
-        username: res.params.username,
-        password: res.params.password,
-        documents: []
-    });
-    user.save(err => {
-        if (err) console.error(err);
+    userTemplate.findOne({"username": req.params.username, "password": req.params.password}, (err, person) => {
+        if (err) console.log(err);
+        console.log(person);
+        if (person) {
+            res.json({user: req.params.username});
+        } else {
+            const user = new userTemplate({
+                _id: mongoose.Types.ObjectId(),
+                username: req.params.username,
+                password: req.params.password,
+                documents: []
+            });
+            user.save(err => {
+                if (err) console.error(err);
+            });
+        }
     });
 });
 
