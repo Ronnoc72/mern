@@ -7,8 +7,10 @@ router.get('/:username/:password', function(req, res, next) {
     userTemplate.findOne({"username": req.params.username, "password": req.params.password}, (err, person) => {
         if (err) console.log(err);
         if (person) {
-            res.json({mes: "Account doesn't exist"});
+            res.json({mes: "Logged In"});
+            return;
         }
+        res.json({mes: "Account doesn't exist"});
     });
 });
 

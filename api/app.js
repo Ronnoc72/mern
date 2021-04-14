@@ -8,27 +8,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const uri = "mongodb+srv://Ronnoc72:Ronnoc258@user-data.30vvh.mongodb.net/users?retryWrites=true&w=majority";
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-// const person = new userTemplate({
-//     _id: new mongoose.Types.ObjectId(),
-//     username: "connor-paxman",
-//     password: "connor-paxman",
-//     title: "main-document",
-//     text: "Hello There",
-//     styles: {
-//         color: "white",
-//         fontSize: "24"
-//     }
-// });
-// person.save((err) => {
-//     if (err) console.error(err);
-// });
 
 const indexRouter = require("./routes/index");
 const historyRouter = require("./routes/history");
-const newFileRouter = require("./routes/newFile");
+const saveFileRouter = require("./routes/save");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
-
 
 const app = express();
 
@@ -45,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // all the routes being used by the app.
 app.use("/", indexRouter);
 app.use("/history", historyRouter);
-app.use("/newfile", newFileRouter);
+app.use("/save", saveFileRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 

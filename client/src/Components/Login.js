@@ -12,12 +12,13 @@ function Login() {
 			if (typeof(children[i].value) === "string") arr.push(children[i].value);
 		}
 		fetch(`http://localhost:9000/login/${arr[0]}/${arr[1]}`)
-		.then(res => {
-			if (res) {
-				return res.json()
+		.then(res => res.json()).then(res => {
+			if (res.mes === "Logged In") {
+				window.location.href = `http://localhost:3000/home`;
+			} else {
+				alert(res.mes);
 			}
-		}).then(res => alert(res.mes));
-		//window.location.href = `http://localhost:3000/home`;
+		});
 		localStorage.username = arr[0];
 	}
 	// creates a new account for the user and redirects them.

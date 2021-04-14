@@ -17,12 +17,16 @@ function handleClick(e) {
     if (e.path[0].id === "image-window" || e.path[0].id === "image-id") return;
     document.getElementById("image-window").style.display = "none";
   }
+  if (document.getElementById("zoom-window").style.display === "block") {
+    if (e.path[0].id === "zoom-window" || e.path[0].id === "zoom-id") return;
+    document.getElementById("zoom-window").style.display = "none";
+  }
 }
 
 export default function ToolBar(props) {
   document.onclick = handleClick;
   const listItems = menuItems.header.map(item => {
-		return <div id={item} className="list-item" onClick={() => {
+		return <div id={item} key={item} className="list-item" onClick={() => {
       const toolbar = document.getElementById("toolbar");
       const doc = document.getElementById(item);
       const rect = doc.getBoundingClientRect();
@@ -37,14 +41,15 @@ export default function ToolBar(props) {
       spanElm.style.width = `${rect.width}px`;
       let objIndex = 0;
       menuItems.dropdown.map(obj => {
-        if (obj.name == item.toLowerCase()) {
+        if (Object.getOwnPropertyNames(obj)[0] === item.toLowerCase()) {
           objIndex = menuItems.dropdown.indexOf(obj);
         }
       });
-      menuItems.dropdown[objIndex].content.map(drop => {
+      const objId = Object.values(menuItems.dropdown[objIndex]);
+      objId[0].map(drop => {
         let p = document.createElement('p');
         p.onclick = props.functionDataBase[drop];
-        p.id = "dropitem"
+        p.id = "dropitem";
         p.style.width = `${rect.width}px`;
         let br = document.createElement("br");
         p.innerHTML = drop;
@@ -57,7 +62,7 @@ export default function ToolBar(props) {
   return (
     <div className="toolbar" id="toolbar">
 	  <span className="dropdown" id="dropdown"></span>
-      <input type="text"></input>
+      <input type="text" id="title" placeholder="Title"></input>
       <div className="list-items">
         {listItems}
       </div>

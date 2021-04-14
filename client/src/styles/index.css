@@ -40,6 +40,13 @@ body {
   margin: 0;
 }
 
+#username {
+  color: whitesmoke;
+  font-size: 36px;
+  background: #d1ac00;
+  padding: 0 15px 0 15px;
+}
+
 p {
 	position: absolute;
 	animation: fade-in 300ms ease-in;

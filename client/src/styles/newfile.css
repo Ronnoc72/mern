@@ -9,7 +9,7 @@
 .paper {
   display: block;
   background: wheat;
-  width: 750px;
+  width: 45%;
   height: 1100px;
   margin-left: 50%;
   margin: auto;
@@ -29,7 +29,7 @@ textarea {
   outline: none;
 }
 
-#font-window {
+#font-window, #image-window, #zoom-window {
   display: none;
   position: absolute;
   background: whitesmoke;
@@ -46,12 +46,3 @@ textarea {
   grid-template-rows: auto;
 }
 
-#image-window {
-  display: none;
-  position: absolute;
-  background: whitesmoke;
-  top: 50px;
-  left: 33%;
-  height: 400px;
-  width: 33%;
-}
