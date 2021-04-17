@@ -22,7 +22,7 @@ function saveEvent() {
 	const title = document.getElementById("title").value;
 	const inputStyles = input.style;
 	const paperStyles = paper.style;
-	fetch(`http://localhost:9000/save/${inputStyles}/${paperStyles}/${title}`);
+	fetch(`http://localhost:9000/save/asdf/hi/this`);
 }
 
 function homeEvent() {

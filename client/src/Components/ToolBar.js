@@ -5,20 +5,20 @@ const menuItems = menu.menuItems;
 
 function handleClick(e) {
   if (document.getElementById("dropdown")) {
-    if (e.path[0].id === "dropitem") return;
+    if (e.target.id === "dropitem") return;
     const toolbar = document.getElementById("toolbar");
     toolbar.removeChild(document.getElementById("dropdown"));
   }
   if (document.getElementById("font-window").style.display === "block") {
-    if (e.path[0].id === "font-window" || e.path[0].id === "font-id") return;
+    if (e.target.id === "font-window" || e.target.id === "font-id") return;
     document.getElementById("font-window").style.display = "none";
   }
   if (document.getElementById("image-window").style.display === "block") {
-    if (e.path[0].id === "image-window" || e.path[0].id === "image-id") return;
+    if (e.target.id === "image-window" || e.target.id === "image-id") return;
     document.getElementById("image-window").style.display = "none";
   }
   if (document.getElementById("zoom-window").style.display === "block") {
-    if (e.path[0].id === "zoom-window" || e.path[0].id === "zoom-id") return;
+    if (e.target.id === "zoom-window" || e.target.id === "zoom-id") return;
     document.getElementById("zoom-window").style.display = "none";
   }
 }

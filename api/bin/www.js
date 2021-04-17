@@ -25,6 +25,7 @@ function normalizePort(val) {
 // if an error happens when the server is connecting.
 function onError(error) {
     if (error.syscall !== "listen") {
+        console.log("error");
         throw error;
     }
     var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
