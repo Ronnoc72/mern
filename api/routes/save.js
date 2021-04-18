@@ -3,16 +3,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const userTemplate = require("../mongodb/user");
 
-router.get("/:input/:paper/:title", function(req, res, next) {
-	console.log(localStorage.username);
-	console.log(req.params.title);
-	let query = {"username": localStorage.username};
-	let update = {$push: {"documents": req.params.title}};
-	console.log(query);
-	console.log(update);
+router.get('/:title/:text/:styles/:username', (req, res, next) => {
+	let query = {"username": req.params.username};
+	let update = {$push: {"documents": 
+	{"title": req.params.title, "text": req.params.text, "styles": req.params.styles}}};
 	userTemplate.updateOne(query, update, (err) => {
-		if (err) console.log(err);
-	});
+		if (err) console.log("Err: ", err);
+	})
 });
 
 module.exports = router;

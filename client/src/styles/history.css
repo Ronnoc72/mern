@@ -1,0 +1,19 @@
+.document {
+	display: flex;
+	justify-content: center;
+	width: 75%;
+	height: 100px;
+	background: wheat;
+}
+
+.documents {
+	width: 75%;
+	margin: 50px;
+	display: grid;
+	grid-row-gap: 10px;
+	grid-template-columns: repeat(5, auto);
+}
+
+.document p {
+	position: absolute;
+}

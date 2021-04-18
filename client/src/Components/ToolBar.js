@@ -36,17 +36,17 @@ export default function ToolBar(props) {
       const spanElm = document.createElement("span");
       spanElm.classList.add("dropdown");
       spanElm.id = "dropdown";
-      spanElm.style.top = `${rect.top}px`;
+      spanElm.style.top = `${(rect.bottom-rect.top)+(rect.height*2-4)}px`;
       spanElm.style.left = `${rect.x}px`;
       spanElm.style.width = `${rect.width}px`;
       let objIndex = 0;
-      menuItems.dropdown.map(obj => {
+      menuItems.dropdown.forEach(obj => {
         if (Object.getOwnPropertyNames(obj)[0] === item.toLowerCase()) {
           objIndex = menuItems.dropdown.indexOf(obj);
         }
       });
       const objId = Object.values(menuItems.dropdown[objIndex]);
-      objId[0].map(drop => {
+      objId[0].forEach(drop => {
         let p = document.createElement('p');
         p.onclick = props.functionDataBase[drop];
         p.id = "dropitem";

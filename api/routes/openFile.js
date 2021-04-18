@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const userTemplate = require("../mongodb/user");
 
-router.get('/:username', function(req, res, next) {
-	console.log(req.params.username);
+router.get('/:username/:id', function(req, res, next) {
     userTemplate.findOne({"username": req.params.username}, (err, person) => {
         if (err) console.log(err);
         if (person) {
-        	res.json({history: person.documents});
+        	console.log(person.documents[parseInt(req.params.id)]);
+        	res.json({doc: person.documents[req.params.id]});
         }
     });
 });

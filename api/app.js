@@ -14,6 +14,7 @@ const historyRouter = require("./routes/history");
 const saveFileRouter = require("./routes/save");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
+const openFileRouter = require("./routes/openFile");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/history", historyRouter);
 app.use("/save", saveFileRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/openfile", openFileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

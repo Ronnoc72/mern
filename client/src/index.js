@@ -10,7 +10,7 @@ const router = (
   <Router>
     <div>
       <Route path="/home" component={Home} />
-      <Route path="/newfile" component={NewFile} />
+      <Route path="/newfile/:open?" component={NewFile} />
       <Route path="/history" component={History} />
       <Route path="/login" component={Login} />
     </div>

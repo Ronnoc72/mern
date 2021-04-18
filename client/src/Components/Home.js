@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import FileSection from "./FileSelection";
 import '../styles/index.css';
 

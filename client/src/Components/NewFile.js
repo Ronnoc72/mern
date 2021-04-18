@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ToolBar from "./ToolBar";
 import FontEvent from "./FontEvent";
 import ImageEvent from "./ImageEvent";
@@ -7,9 +7,6 @@ import "../styles/newfile.css";
 import menu from "../text.json";
 const menuItems = menu.menuItems;
 
-function handleClick(e) {
-	console.log(e);
-}
 // all event functions for the functionDataBase variable.
 function clearEvent() {
   const input = document.getElementById("main-doc");
@@ -17,16 +14,21 @@ function clearEvent() {
 }
 
 function saveEvent() {
-  const input = document.getElementById("main-doc");
-	const paper = document.getElementById("paper");
-	const title = document.getElementById("title").value;
-	const inputStyles = input.style;
-	const paperStyles = paper.style;
-	fetch(`http://localhost:9000/save/asdf/hi/this`);
+  	const input = document.getElementById("main-doc");
+	let title = document.getElementById("title").value;
+	if (!title) {
+		title = "Untitled Doc";
+	}
+	let styles = {};
+	const styleKeys = Object.values(input.style);
+	for (let key in styleKeys) {
+		styles[styleKeys[key]] = input.style[styleKeys[key]]
+	}
+	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}`);
 }
 
 function homeEvent() {
-  console.log("Home");
+  window.location.href = `http://localhost:3000/home`;
 }
 
 function fontEvent() {
@@ -48,7 +50,18 @@ function insertEvent() {
   return;
 }
 
-export default function NewFile() {
+export default function NewFile({match}) {
+	useEffect(() => {
+		if (match.params.open) {
+			loadInfo();
+		}
+	})
+	const loadInfo = async () => {
+		const info = await fetch(`http://localhost:9000/openfile/${localStorage.username}/${localStorage.fileID}`)
+		.then(res => res.json()).then(res => console.log(res))
+		.catch(err => console.log(err));
+		document.getElementById('main-doc').value = info.text;
+	}
 	const functionDataBase = {}
   	menuItems.dropdown.forEach(obj => {
 			const arr = Object.values(obj);
@@ -87,7 +100,7 @@ export default function NewFile() {
             </div>
             <FontEvent />
             <ImageEvent />
-						<ZoomEvent />
+			<ZoomEvent />
         </div>
     );
 }
