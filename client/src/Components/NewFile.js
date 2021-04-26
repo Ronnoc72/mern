@@ -24,7 +24,8 @@ function saveEvent() {
 	for (let key in styleKeys) {
 		styles[styleKeys[key]] = input.style[styleKeys[key]]
 	}
-	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}`);
+	console.log("saving the data...");
+	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}/${localStorage.fileID}`);
 }
 
 function homeEvent() {
@@ -58,9 +59,12 @@ export default function NewFile({match}) {
 	})
 	const loadInfo = async () => {
 		const info = await fetch(`http://localhost:9000/openfile/${localStorage.username}/${localStorage.fileID}`)
-		.then(res => res.json()).then(res => console.log(res))
+		.then(res => res.json())
 		.catch(err => console.log(err));
-		document.getElementById('main-doc').value = info.text;
+		const mainDoc = document.getElementById('main-doc');
+		mainDoc.value = info.doc.text;
+		mainDoc.style = info.doc.styles;
+		document.getElementById('title').value = info.doc.title;
 	}
 	const functionDataBase = {}
   	menuItems.dropdown.forEach(obj => {
