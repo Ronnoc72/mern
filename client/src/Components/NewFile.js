@@ -13,8 +13,9 @@ function clearEvent() {
   input.value = "";
 }
 
-function saveEvent() {
-  	const input = document.getElementById("main-doc");
+async function saveEvent() {
+	// saves all the information about the element.
+  const input = document.getElementById("main-doc");
 	let title = document.getElementById("title").value;
 	if (!title) {
 		title = "Untitled Doc";
@@ -22,17 +23,21 @@ function saveEvent() {
 	let styles = {};
 	const styleKeys = Object.values(input.style);
 	for (let key in styleKeys) {
-		styles[styleKeys[key]] = input.style[styleKeys[key]]
+		styles[styleKeys[key]] = input.style[styleKeys[key]];
 	}
-	console.log("saving the data...");
-	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}/${localStorage.fileID}`);
+	// getting the index for the array that the document is in.
+	const index = await fetch(`http://localhost:9000/getindex/${localStorage.username}/${title}/${input.value}/${JSON.stringify(styles)}`)
+	.then(res => res.json()).then(res => res.index);
+	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}/${index}`);
 }
 
 function homeEvent() {
+	// takes the user back home.
   window.location.href = `http://localhost:3000/home`;
 }
 
 function fontEvent() {
+	// creates a window that the user can customize the font.
   const span = document.getElementById("font-window");
   span.style.display = "block";
 }
@@ -43,6 +48,7 @@ function imageEvent() {
 }
 
 function zoomEvent() {
+	// creates a window that the user can customize their workspace.
   const span = document.getElementById("zoom-window");
   span.style.display = "block";
 }
@@ -58,14 +64,22 @@ export default function NewFile({match}) {
 		}
 	})
 	const loadInfo = async () => {
+		// loads all the information the document exists.
 		const info = await fetch(`http://localhost:9000/openfile/${localStorage.username}/${localStorage.fileID}`)
 		.then(res => res.json())
 		.catch(err => console.log(err));
 		const mainDoc = document.getElementById('main-doc');
 		mainDoc.value = info.doc.text;
-		mainDoc.style = info.doc.styles;
+		const parsedStyle = JSON.parse(info.doc.styles)
+		const styleKeys = Object.keys(parsedStyle);
+		for (let s in styleKeys) {
+			const camelCased = styleKeys[s].replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+			console.log(parsedStyle[styleKeys[s]]);
+			mainDoc.style[camelCased] = parsedStyle[styleKeys[s]];
+		}
 		document.getElementById('title').value = info.doc.title;
 	}
+	// fills the function database with all the events that the user can call.
 	const functionDataBase = {}
   	menuItems.dropdown.forEach(obj => {
 			const arr = Object.values(obj);

@@ -15,6 +15,7 @@ const saveFileRouter = require("./routes/save");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const openFileRouter = require("./routes/openFile");
+const getIndexRouter = require("./routes/getIndex");
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use("/save", saveFileRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/openfile", openFileRouter);
+app.use("/getindex", getIndexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
