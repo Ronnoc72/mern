@@ -14,7 +14,8 @@ router.get('/:username/:password', function(req, res, next) {
                 _id: mongoose.Types.ObjectId(),
                 username: req.params.username,
                 password: req.params.password,
-                documents: []
+                documents: [],
+                theme: {}
             });
             user.save(err => {
                 if (err) console.error(err);

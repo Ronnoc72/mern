@@ -5,7 +5,8 @@ const userTemplate = new Schema({
   _id: String,
   username: String,
   password: String,
-  documents: Array
+  documents: Array,
+  theme: Object
 });
 
 var User = mongoose.model('user-data', userTemplate);

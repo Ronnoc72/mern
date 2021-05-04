@@ -1,0 +1,19 @@
+.theme-docs {
+  width: 75%;
+	margin: 50px;
+	display: grid;
+	grid-row-gap: 10px;
+	grid-template-columns: repeat(5, auto);
+}
+
+.theme-doc {
+	display: flex;
+	justify-content: center;
+	width: 75%;
+	height: 100px;
+	background: wheat;
+}
+
+.theme-doc p {
+	position: absolute;
+}

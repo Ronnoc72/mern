@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function FileSelection() {
-	const items = ["newfile", "themes", "history"];
+	const items = ["newfile", "theme", "history"];
 	const url = "http://localhost:3000/"
 	const divs = items.map(text => {
 			return <div onMouseEnter={(e) => {
