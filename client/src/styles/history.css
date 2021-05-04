@@ -6,6 +6,13 @@
 	background: wheat;
 }
 
+.document:hover {
+	padding: 15px;
+	background: rgb(235, 200, 133);
+	transition: 200ms;
+	font-size: 30px;
+}
+
 .documents {
 	width: 75%;
 	margin: 50px;
@@ -16,4 +23,18 @@
 
 .document p {
 	position: absolute;
+}
+
+button {
+	padding: 0px 15px 0px 15px;
+	font-size: 24px;
+	background: #d1ac00;
+	border: none;
+}
+
+button:hover {
+	transition: 200ms;
+	font-size: 30px;
+	padding: 0 10px 0 10px;
+	background: #ae8e01;
 }

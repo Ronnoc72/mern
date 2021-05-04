@@ -10,7 +10,7 @@ function handleInput(e) {
 
 export default function FontEvent() {
 	const fontList = menuItems.fonts.map(item => {
-		return <div id="font-id" onClick={() => {
+		return <div style={{fontFamily: item}} id="font-id" onClick={() => {
 			const input = document.getElementById("main-doc");
 			const span = document.getElementById("font-window");
 			input.style.fontFamily = item;
@@ -19,8 +19,11 @@ export default function FontEvent() {
 	});
 	return (
 			<span id="font-window">
-      	<input type="range" min="1" max="72" step="1" id="font-id" onInput={handleInput} />
-      	<div id="font-id">
+				<div id="font-id" className="center">
+					<label for="font">Font Size: </label>
+      		<input type="range" name="font" min="1" max="72" step="1" id="font-id" onInput={handleInput} />
+				</div>
+      	<div id="font-id" className="grid">
       		{fontList}
       	</div>
       </span>

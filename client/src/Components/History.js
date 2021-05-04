@@ -31,6 +31,9 @@ export default function History() {
 	}
 	return (
 		<div>
+			<button onClick={() => {
+				window.location.href = `http://localhost:3000/home`;
+			}}>HOME</button>
 			<div className="documents">
 				{documents}
 			</div>

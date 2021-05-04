@@ -13,13 +13,13 @@ function handleClick(e) {
     if (e.target.id === "font-window" || e.target.id === "font-id") return;
     document.getElementById("font-window").style.display = "none";
   }
-  if (document.getElementById("image-window").style.display === "block") {
-    if (e.target.id === "image-window" || e.target.id === "image-id") return;
-    document.getElementById("image-window").style.display = "none";
-  }
   if (document.getElementById("zoom-window").style.display === "block") {
     if (e.target.id === "zoom-window" || e.target.id === "zoom-id") return;
     document.getElementById("zoom-window").style.display = "none";
+  }
+  if (document.getElementById("color-window").style.display === "block") {
+    if (e.target.id === "color-window" || e.target.id === "color-id") return;
+    document.getElementById("color-window").style.display = "none";
   }
 }
 
@@ -36,7 +36,7 @@ export default function ToolBar(props) {
       const spanElm = document.createElement("span");
       spanElm.classList.add("dropdown");
       spanElm.id = "dropdown";
-      spanElm.style.top = `${(rect.bottom-rect.top)+(rect.height*2-4)}px`;
+      spanElm.style.top = `${(rect.bottom-rect.top)+(rect.height*4-15)}px`;
       spanElm.style.left = `${rect.x}px`;
       spanElm.style.width = `${rect.width}px`;
       let objIndex = 0;

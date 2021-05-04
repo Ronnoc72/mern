@@ -10,7 +10,8 @@ export default function FileSelection() {
 				p.id = "p-element";
 				e.target.appendChild(p);
 		}} onMouseLeave={(e) => {
-			  e.target.removeChild(document.getElementById("p-element"));
+			if (!document.getElementById("p-element")) return;
+			e.target.removeChild(document.getElementById("p-element"));
 		}} onClick={() => {
 			window.location.href = `${url+text}`;
 		}} className="selection" key={text}></div>

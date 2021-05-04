@@ -3,9 +3,12 @@
         "header": ["File", "Edit", "View"],
         "dropdown": [
             {"file": ["Clear", "Save", "Home"]},
-            {"edit": ["Font", "Image"]},
+            {"edit": ["Font", "Color"]},
             {"view": ["Zoom", "Insert"]}
         ],
-        "fonts": ["Calibri", "Verdana", "Helvetica", "Arial", "Times New Roman", "Rockwell"]
+        "fonts": ["Calibri", "Verdana", "Helvetica", "Arial", "Times New Roman", "Rockwell"],
+        "colors": ["olive", "forestgreen", "ghostwhite", "greenyellow", "khaki", "indianred", "indigo",
+             "gold", "dogerblue", "dimgray", "coral", "blue", "brown", "chocolate", "blueviolet", "darkcyan", 
+             "aqua", "aliceblue", "lighseagreen", "lightsalmon", "lighslategray"]
     }
 }

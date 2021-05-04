@@ -9,7 +9,7 @@
 .paper {
   display: block;
   background: wheat;
-  width: 45%;
+  width: 55%;
   height: 1100px;
   margin-left: 50%;
   margin: auto;
@@ -29,7 +29,7 @@ textarea {
   outline: none;
 }
 
-#font-window, #image-window, #zoom-window {
+#font-window, #image-window, #zoom-window, #color-window {
   display: none;
   position: absolute;
   background: whitesmoke;
@@ -39,10 +39,29 @@ textarea {
   width: 33%;
 }
 
-#font-window div {
+.grid {
   display: grid;
   list-style-type: none;
   font-size: large;
   grid-template-rows: auto;
+  grid-row-gap: 10px;
+  padding-left: 15px;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.align {
+  margin-top: 20%;
+}
+
+#color-window div {
+  display: grid;
+  list-style-type: none;
+  font-size: large;
+  grid-template-columns: repeat(3, auto);
+  grid-row-gap: 10px;
+  padding-left: 15px;
+}

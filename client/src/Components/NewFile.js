@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
 import ToolBar from "./ToolBar";
 import FontEvent from "./FontEvent";
-import ImageEvent from "./ImageEvent";
 import ZoomEvent from "./ZoomEvent";
+import ColorEvent from "./ColorEvent";
 import "../styles/newfile.css";
 import menu from "../text.json";
 const menuItems = menu.menuItems;
+const api = "http://localhost:9000/";
 
 // all event functions for the functionDataBase variable.
 function clearEvent() {
@@ -26,9 +27,9 @@ async function saveEvent() {
 		styles[styleKeys[key]] = input.style[styleKeys[key]];
 	}
 	// getting the index for the array that the document is in.
-	const index = await fetch(`http://localhost:9000/getindex/${localStorage.username}/${title}/${input.value}/${JSON.stringify(styles)}`)
+	const index = await fetch(`${api}getindex/${localStorage.username}/${title}/${input.value}/${JSON.stringify(styles)}`)
 	.then(res => res.json()).then(res => res.index);
-	fetch(`http://localhost:9000/save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}/${index}`);
+	fetch(`${api}save/${title}/${input.value}/${JSON.stringify(styles)}/${localStorage.username}/${index}`);
 }
 
 function homeEvent() {
@@ -42,8 +43,9 @@ function fontEvent() {
   span.style.display = "block";
 }
 
-function imageEvent() {
-  const span = document.getElementById("image-window");
+function colorEvent() {
+	// creates a window for the user to change the color of the text.
+	const span = document.getElementById("color-window");
   span.style.display = "block";
 }
 
@@ -65,7 +67,7 @@ export default function NewFile({match}) {
 	})
 	const loadInfo = async () => {
 		// loads all the information the document exists.
-		const info = await fetch(`http://localhost:9000/openfile/${localStorage.username}/${localStorage.fileID}`)
+		const info = await fetch(`${api}openfile/${localStorage.username}/${localStorage.fileID}`)
 		.then(res => res.json())
 		.catch(err => console.log(err));
 		const mainDoc = document.getElementById('main-doc');
@@ -74,7 +76,6 @@ export default function NewFile({match}) {
 		const styleKeys = Object.keys(parsedStyle);
 		for (let s in styleKeys) {
 			const camelCased = styleKeys[s].replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
-			console.log(parsedStyle[styleKeys[s]]);
 			mainDoc.style[camelCased] = parsedStyle[styleKeys[s]];
 		}
 		document.getElementById('title').value = info.doc.title;
@@ -97,8 +98,8 @@ export default function NewFile({match}) {
 				case "Font":
 					functionDataBase[element] = fontEvent;
 					break;
-				case "Image":
-					functionDataBase[element] = imageEvent;
+				case "Color":
+					functionDataBase[element] = colorEvent;
 					break;
 				case "Zoom":
 					functionDataBase[element] = zoomEvent;
@@ -117,8 +118,8 @@ export default function NewFile({match}) {
               <textarea id="main-doc"></textarea>
             </div>
             <FontEvent />
-            <ImageEvent />
-			<ZoomEvent />
+						<ZoomEvent />
+						<ColorEvent />
         </div>
     );
 }
