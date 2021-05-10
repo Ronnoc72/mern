@@ -1,14 +1,19 @@
+:root {
+  --text-c: #0c1618;
+  --background-c: #004643;
+  --paper-c: #faf4d3;
+}
+
 .document {
 	display: flex;
 	justify-content: center;
 	width: 75%;
 	height: 100px;
-	background: wheat;
+	background: var(--paper-c);
 }
 
 .document:hover {
 	padding: 15px;
-	background: rgb(235, 200, 133);
 	transition: 200ms;
 	font-size: 30px;
 }

@@ -55,16 +55,21 @@ function zoomEvent() {
   span.style.display = "block";
 }
 
-function insertEvent() {
-  return;
-}
-
 export default function NewFile({match}) {
 	useEffect(() => {
+		loadTheme();
 		if (match.params.open) {
 			loadInfo();
 		}
 	})
+	const loadTheme = async () => {
+		const data = await fetch(`${api}gettheme/${localStorage.username}`)
+		.then(res => res.json());
+		const theme = data.theme;
+		const root = document.querySelector(":root");
+		root.style.setProperty("--background-c", theme.background);
+		root.style.setProperty("--paper-c", theme.page);
+	}
 	const loadInfo = async () => {
 		// loads all the information the document exists.
 		const info = await fetch(`${api}openfile/${localStorage.username}/${localStorage.fileID}`)
@@ -103,9 +108,6 @@ export default function NewFile({match}) {
 					break;
 				case "Zoom":
 					functionDataBase[element] = zoomEvent;
-					break;
-				case "Insert":
-					functionDataBase[element] = insertEvent;
 					break;
 				}
 			});

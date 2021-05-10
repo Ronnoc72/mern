@@ -1,3 +1,9 @@
+:root {
+  --text-c: #0c1618;
+  --background-c: #004643;
+  --paper-c: #faf4d3;
+}
+
 .theme-docs {
   width: 75%;
 	margin: 50px;
@@ -11,9 +17,15 @@
 	justify-content: center;
 	width: 75%;
 	height: 100px;
-	background: wheat;
+	background: var(--paper-c);
 }
 
 .theme-doc p {
 	position: absolute;
+}
+
+.theme-doc:hover {
+	padding: 15px;
+	transition: 200ms;
+	font-size: 30px;
 }

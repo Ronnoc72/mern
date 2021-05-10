@@ -40,3 +40,27 @@ form div div input {
   justify-content: center;
 }
 
+#forgot-pass {
+  display: block;
+  margin-left: 50%;
+  margin: auto;
+  background: whitesmoke;
+  width: 200px;
+  height: 100px;
+  display: none;
+}
+
+#forgot-pass input {
+  display: block;
+  margin-left: 50%;
+  margin: auto;
+}
+
+#forgot-pass button {
+  display: block;
+  margin-left: 50%;
+  margin: auto;
+  font-size: 14px;
+  padding: 5px;
+}
+

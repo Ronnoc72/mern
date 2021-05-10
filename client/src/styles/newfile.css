@@ -1,5 +1,8 @@
 :root {
   --size: 36px;
+  --text-c: #0c1618;
+  --background-c: #004643;
+  --paper-c: #faf4d3;
 }
 
 .newfile {
@@ -8,7 +11,7 @@
 
 .paper {
   display: block;
-  background: wheat;
+  background: var(--paper-c);
   width: 55%;
   height: 1100px;
   margin-left: 50%;
@@ -19,7 +22,7 @@ textarea {
   font-size: var(--size);
   position: relative;
   display: block;
-  background: wheat;
+  background: var(--paper-c);
   border: none;
   margin: auto;
   top: 80px;
