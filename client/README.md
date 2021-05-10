@@ -1,9 +1,11 @@
 Mern Project:
 This is a project that is made with mongodb(M), express(E), react(R), and node(N).
 Ideas:
->Chess
->Recreating my school’s website (front-end)
->Lite Google Docs Clone
+<ul>
+  <li>Chess</li>
+  <li>Recreating my school’s website (front-end)</li>
+  <li>Lite Google Docs Clone</li>
+</ul>
 
 ><b>Chess</b> would be difficult where I am now and it would take a long time to complete with all the styling and functionality. This website would have to have two players to use, because I don’t know how to create a chess ai, and doing the research might take too long. However, this would be a really good exercise for react, which is something that I want to get good at.
 
